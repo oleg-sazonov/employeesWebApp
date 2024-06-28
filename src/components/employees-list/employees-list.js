@@ -8,9 +8,10 @@ const EmployeesList = ({data, onDelete}) => {
 		return (
 			// <EmployeesListItem name={item.name} salary={item.salary}/>
 			<EmployeesListItem 
-				key={id} 
+				key={id} //this id is got from props -> (data -> item[index] -> id)
 				{...itemProps}
-				onDelete={() => onDelete(id)}/>
+				onDelete={() => onDelete(id)}
+				onSubmit={() => console.log('add employee')}/> // this func'll go to EmployeesListItem 
 		);
 	});
 

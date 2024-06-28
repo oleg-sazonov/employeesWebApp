@@ -23,7 +23,7 @@ class EmployeesListItem extends Component {
     }
 
     render() {
-        const {name, salary, onDelete} = this.props;
+        const {name, salary, onDelete} = this.props; //onDelete is a func, that went from app.js(deleteItem)
         const {increase, like} = this.state;
 
         let classNames = 'list-group-item d-flex justify-content-between';
