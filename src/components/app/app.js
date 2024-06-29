@@ -41,18 +41,6 @@ class App extends Component {
     }
 
 	onToggleIncrease = (id) => {
-		// this.setState(({data}) => {
-		// 	const index = data.findIndex(elem => elem.id === id);
-
-		// 	const old = data[index];
-		// 	const newItem ={...old, increase: !old.increase};
-		// 	const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
-		// 	return {
-		// 		data: newArr
-		// 	}
-		// })
-
 		this.setState(({data}) => ({
 			data: data.map(item => {
 				if (item.id === id) {
@@ -64,13 +52,26 @@ class App extends Component {
 	}
 
 	onToggleRise = (id) => {
-		console.log(`rise this ${id}`);
+		this.setState(({data}) => ({
+			data: data.map(item => {
+				if (item.id === id) {
+					return {...item, rise: !item.rise}
+				}
+				return item;
+			})
+		}))
 	}
 
 	render() {
+		const {data} = this.state;
+		const totalEmps = data.length;
+		const increasedEmps = data.filter(item => item.increase === true).length;
+
 		return (
 			<div className="app">
-				<AppInfo/>
+				<AppInfo 
+					totalEmps={totalEmps}
+					increasedEmps={increasedEmps}/>
 
 				<div className="search-panel">
 					<SearchPanel/>
